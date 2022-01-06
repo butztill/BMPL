@@ -35,7 +35,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -84,6 +83,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(132, 8);
+            this.progressBar1.Maximum = 1000;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(326, 23);
             this.progressBar1.Step = 1;
@@ -93,10 +93,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // backgroundWorker2
-            // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             // 
             // label1
             // 
@@ -123,7 +119,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,9 +138,7 @@
         private Button button3;
         private Button button4;
         private ProgressBar progressBar1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Timer timer1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private Label label1;
     }
 }
