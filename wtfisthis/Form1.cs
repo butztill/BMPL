@@ -18,7 +18,13 @@ namespace wtfisthis
             this.vlcControl1.Size = new System.Drawing.Size(800, 450);
             this.vlcControl1.Spu = -1;
             this.vlcControl1.TabIndex = 14;
-            this.vlcControl1.VlcMediaplayerOptions = null;
+            if (Directory.Exists(@".\presets\presets_milkdrop")) {
+                this.vlcControl1.VlcMediaplayerOptions = new string[] { @"--audio-visual=projectm",@"--projectm-preset-path=.\presets\presets_milkdrop", (@"--projectm-width=" + Screen.PrimaryScreen.Bounds.Width), (@"--projectm-height=" + Screen.PrimaryScreen.Bounds.Height)};
+            }
+            else
+            {
+                this.vlcControl1.VlcMediaplayerOptions = new string[] { @"--audio-visual=goom" };
+            }
             this.vlcControl1.VlcLibDirectory = new DirectoryInfo(@".\libvlc\win-x64");
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             this.Controls.Add(this.vlcControl1);

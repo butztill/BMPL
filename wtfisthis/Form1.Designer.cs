@@ -192,7 +192,7 @@ namespace wtfisthis
             // getMediaToolStripMenuItem
             // 
             this.getMediaToolStripMenuItem.Name = "getMediaToolStripMenuItem";
-            this.getMediaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getMediaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.getMediaToolStripMenuItem.Text = "GetMedia";
             this.getMediaToolStripMenuItem.Click += new System.EventHandler(this.getMediaToolStripMenuItem_Click);
             // 
@@ -260,6 +260,7 @@ namespace wtfisthis
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "BMPL";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
