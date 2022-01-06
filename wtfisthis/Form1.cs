@@ -21,7 +21,6 @@ namespace wtfisthis
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             this.Controls.Add(this.vlcControl1);
             // the Rest
-            this.progressBar1.MarqueeAnimationSpeed = 0;
             openFileDialog1 = new OpenFileDialog();
         }
         private void progressBar1_Click(object sender, EventArgs e)
