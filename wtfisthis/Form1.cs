@@ -58,6 +58,9 @@ namespace wtfisthis
             vlcControl1.SetMedia(new FileInfo(openFileDialog1.FileName));
             vlcControl1.Play();
             timer1.Start();
+            this.playToolStripMenuItem.Enabled = true;
+            this.pauseToolStripMenuItem.Enabled = true;
+            this.stopToolStripMenuItem.Enabled = true;
             }
             catch
             {
@@ -69,6 +72,7 @@ namespace wtfisthis
         {
             vlcControl1.Play();
             timer1.Start();
+            this.pauseToolStripMenuItem.Enabled = true;
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,6 +86,7 @@ namespace wtfisthis
             timer1.Stop();
             progressBar1.Value = 0;
             toolStripMenuItem1.Text = "0s";
+            this.pauseToolStripMenuItem.Enabled = false;
         }
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
