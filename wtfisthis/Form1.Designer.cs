@@ -35,6 +35,10 @@ namespace wtfisthis
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox7 = new System.Windows.Forms.ToolStripTextBox();
+            this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +48,7 @@ namespace wtfisthis
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getMediaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -76,10 +81,41 @@ namespace wtfisthis
             // 
             // öffnenToolStripMenuItem
             // 
+            this.öffnenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
             this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.öffnenToolStripMenuItem.Text = "Open";
-            this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(95, 22);
+            this.toolStripMenuItem3.Text = "File";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox7,
+            this.loadToolStripMenuItem1});
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(95, 22);
+            this.toolStripMenuItem4.Text = "URL";
+            // 
+            // toolStripTextBox7
+            // 
+            this.toolStripTextBox7.Name = "toolStripTextBox7";
+            this.toolStripTextBox7.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox7.ToolTipText = "Insert URL";
+            // 
+            // loadToolStripMenuItem1
+            // 
+            this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
+            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.loadToolStripMenuItem1.Text = "Load";
+            this.loadToolStripMenuItem1.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
             // 
             // playToolStripMenuItem
             // 
@@ -146,16 +182,25 @@ namespace wtfisthis
             // 
             // debugToolStripMenuItem
             // 
+            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.getMediaToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.debugToolStripMenuItem.Text = "Debug";
             this.debugToolStripMenuItem.Visible = false;
             // 
+            // getMediaToolStripMenuItem
+            // 
+            this.getMediaToolStripMenuItem.Name = "getMediaToolStripMenuItem";
+            this.getMediaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getMediaToolStripMenuItem.Text = "GetMedia";
+            this.getMediaToolStripMenuItem.Click += new System.EventHandler(this.getMediaToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(30, 20);
-            this.toolStripMenuItem1.Text = "0s";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(108, 20);
+            this.toolStripMenuItem1.Text = "00:00:00/00:00:00";
             // 
             // aboutToolStripMenuItem
             // 
@@ -174,7 +219,7 @@ namespace wtfisthis
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.ReadOnly = true;
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.Text = "v1.0";
+            this.toolStripTextBox1.Text = "v1.1";
             // 
             // toolStripTextBox4
             // 
@@ -243,5 +288,10 @@ namespace wtfisthis
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripTextBox toolStripTextBox4;
         private ToolStripTextBox toolStripTextBox5;
+        private ToolStripMenuItem getMediaToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripTextBox toolStripTextBox7;
+        private ToolStripMenuItem loadToolStripMenuItem1;
     }
 }

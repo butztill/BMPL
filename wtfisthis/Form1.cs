@@ -1,3 +1,5 @@
+using Vlc.DotNet.Core;
+
 namespace wtfisthis
 {
     public partial class Form1 : Form
@@ -36,7 +38,14 @@ namespace wtfisthis
 
             int posint = Convert.ToInt32(vlcControl1.Position * 10000);
             string playtime = Convert.ToString(vlcControl1.Time / 1000);
-            toolStripMenuItem1.Text = Convert.ToString(playtime) + "s";
+            TimeSpan playtime2 = TimeSpan.FromSeconds(Convert.ToDouble(playtime));
+            string playtime3 = playtime2.ToString(@"hh\:mm\:ss");
+            VlcMedia mediadur = vlcControl1.VlcMediaPlayer.GetMedia();
+            mediadur.Parse();
+            TimeSpan mediadur2 = mediadur.Duration;
+            var mediadur3 = mediadur2.ToString(@"hh\:mm\:ss");
+            toolStripMenuItem1.Text = playtime3 + "/" + mediadur3;
+            //toolStripMenuItem1.Text = Convert.ToString(playtime) + "s";
             if (posint > 0 && posint < 10000)
             {
                 progressBar1.Value = posint;
@@ -46,23 +55,6 @@ namespace wtfisthis
                 progressBar1.Value = 0;
             }
         }
-        private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            try { 
-            vlcControl1.SetMedia(new FileInfo(openFileDialog1.FileName));
-            vlcControl1.Play();
-            timer1.Start();
-            this.playToolStripMenuItem.Enabled = true;
-            this.pauseToolStripMenuItem.Enabled = true;
-            this.stopToolStripMenuItem.Enabled = true;
-            }
-            catch
-            {
-                MessageBox.Show("No file selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlcControl1.Play();
@@ -80,7 +72,7 @@ namespace wtfisthis
             vlcControl1.Stop();
             timer1.Stop();
             progressBar1.Value = 0;
-            toolStripMenuItem1.Text = "0s";
+            toolStripMenuItem1.Text = @"00:00:00";
             this.pauseToolStripMenuItem.Enabled = false;
         }
         private void trackBar1_ValueChanged(object sender, EventArgs e)
@@ -95,7 +87,9 @@ namespace wtfisthis
         }
         private void toolStripTextBox2_TextChanged(object sender, EventArgs e)
         {
+#pragma warning disable CA1806 // Do not ignore method results
             int.TryParse(toolStripTextBox2.Text, out int vol);
+#pragma warning restore CA1806 // Do not ignore method results
             {
                 vlcControl1.Audio.Volume = vol;
             }
@@ -104,6 +98,50 @@ namespace wtfisthis
         private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
             vlcControl1.Audio.ToggleMute();
+        }
+
+        private void getMediaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VlcMedia getmedia = vlcControl1.VlcMediaPlayer.GetMedia();
+            try { 
+            getmedia.Parse();
+            MessageBox.Show("Title=" + getmedia.Title + "\n" + "Duration=" + getmedia.Duration);
+            }
+            catch { }
+        }
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            try
+            {
+                vlcControl1.SetMedia(new FileInfo(openFileDialog1.FileName));
+                vlcControl1.Play();
+                timer1.Start();
+                this.playToolStripMenuItem.Enabled = true;
+                this.pauseToolStripMenuItem.Enabled = true;
+                this.stopToolStripMenuItem.Enabled = true;
+            }
+            catch
+            {
+                MessageBox.Show("No file selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void loadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                vlcControl1.SetMedia(new Uri(toolStripTextBox7.Text));
+                vlcControl1.Play();
+                timer1.Start();
+                this.playToolStripMenuItem.Enabled = true;
+                this.pauseToolStripMenuItem.Enabled = true;
+                this.stopToolStripMenuItem.Enabled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid URL", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
