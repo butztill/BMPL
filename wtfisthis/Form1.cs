@@ -25,6 +25,7 @@ namespace wtfisthis
             // the Rest
             openFileDialog1 = new OpenFileDialog();
         }
+        public bool fromurl = false;
         private void progressBar1_Click(object sender, EventArgs e)
         {
             Point CP = progressBar1.PointToClient(Cursor.Position);
@@ -40,12 +41,20 @@ namespace wtfisthis
             string playtime = Convert.ToString(vlcControl1.Time / 1000);
             TimeSpan playtime2 = TimeSpan.FromSeconds(Convert.ToDouble(playtime));
             string playtime3 = playtime2.ToString(@"hh\:mm\:ss");
-            VlcMedia mediadur = vlcControl1.VlcMediaPlayer.GetMedia();
-            mediadur.Parse();
-            TimeSpan mediadur2 = mediadur.Duration;
-            var mediadur3 = mediadur2.ToString(@"hh\:mm\:ss");
-            toolStripMenuItem1.Text = playtime3 + "/" + mediadur3;
-            //toolStripMenuItem1.Text = Convert.ToString(playtime) + "s";
+
+            if (fromurl == true)
+            {
+                toolStripMenuItem1.Text = Convert.ToString(playtime3);
+            }   
+            else 
+            {
+                VlcMedia getmedia = vlcControl1.VlcMediaPlayer.GetMedia();
+                getmedia.Parse();
+                TimeSpan mediadur2 = getmedia.Duration;
+                var mediadur3 = mediadur2.ToString(@"hh\:mm\:ss");
+                toolStripMenuItem1.Text = playtime3 + "/" + mediadur3;
+                
+            }
             if (posint > 0 && posint < 10000)
             {
                 progressBar1.Value = posint;
@@ -105,7 +114,7 @@ namespace wtfisthis
             VlcMedia getmedia = vlcControl1.VlcMediaPlayer.GetMedia();
             try { 
             getmedia.Parse();
-            MessageBox.Show("Title=" + getmedia.Title + "\n" + "Duration=" + getmedia.Duration);
+            MessageBox.Show("Title=" + getmedia.Title + "\n" + "Duration=" + getmedia.Duration + getmedia.URL);
             }
             catch { }
         }
@@ -115,6 +124,7 @@ namespace wtfisthis
             try
             {
                 vlcControl1.SetMedia(new FileInfo(openFileDialog1.FileName));
+                fromurl = false;
                 vlcControl1.Play();
                 timer1.Start();
                 this.playToolStripMenuItem.Enabled = true;
@@ -137,6 +147,7 @@ namespace wtfisthis
                 this.playToolStripMenuItem.Enabled = true;
                 this.pauseToolStripMenuItem.Enabled = true;
                 this.stopToolStripMenuItem.Enabled = true;
+                fromurl = true;
             }
             catch
             {
