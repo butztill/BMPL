@@ -9,8 +9,23 @@ namespace wtfisthis
         public Form1()
         {
             InitializeComponent();
-            
+            // 
+            // vlcControl1
+            //
+            this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
+            this.vlcControl1.BackColor = System.Drawing.Color.Black;
+            this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Name = "vlcControl1";
+            this.vlcControl1.Size = new System.Drawing.Size(800, 450);
+            this.vlcControl1.Spu = -1;
+            this.vlcControl1.TabIndex = 14;
+            this.vlcControl1.VlcMediaplayerOptions = null;
+            this.vlcControl1.VlcLibDirectory = new DirectoryInfo(@".\libvlc\win-x64");
             //vlcControl1.VlcLibDirectory = new DirectoryInfo(@"C:\Users\butzt\source\repos\wtfisthis\wtfisthis\bin\Debug\net6.0-windows\libvlc\win-x64");
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
+            this.Controls.Add(this.vlcControl1);
             openFileDialog1 = new OpenFileDialog();
         }
 

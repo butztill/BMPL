@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,20 +37,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // vlcControl1
-            // 
-            this.vlcControl1.BackColor = System.Drawing.Color.Black;
-            this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
-            this.vlcControl1.Name = "vlcControl1";
-            this.vlcControl1.Size = new System.Drawing.Size(800, 450);
-            this.vlcControl1.Spu = -1;
-            this.vlcControl1.TabIndex = 14;
-            this.vlcControl1.VlcMediaplayerOptions = null;
-            vlcControl1.VlcLibDirectory = new DirectoryInfo(@"C:\Users\butzt\source\repos\wtfisthis\wtfisthis\bin\Debug\net6.0-windows\libvlc\win-x64");
             // 
             // button1
             // 
@@ -135,10 +121,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.vlcControl1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
