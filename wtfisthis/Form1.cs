@@ -88,7 +88,7 @@ namespace wtfisthis
             int posint = Convert.ToInt32(vlcControl1.Position * 100);
             string playtime = Convert.ToString(vlcControl1.Time / 1000);
             label1.Text = Convert.ToString(playtime) + "s";
-            if (posint < 0 || posint > 100) { 
+            if (posint > 0 && posint < 100) { 
             progressBar1.Value = posint;
             }
             else { 
