@@ -24,10 +24,6 @@ namespace wtfisthis
             this.progressBar1.MarqueeAnimationSpeed = 0;
             openFileDialog1 = new OpenFileDialog();
         }
-        public bool mouseonv = false;
-        public bool mouseonp = false;
-        public bool mouseonb = false;
-        public bool isvideo = true;
         private void progressBar1_Click(object sender, EventArgs e)
         {
             Point CP = progressBar1.PointToClient(Cursor.Position);
