@@ -20,11 +20,9 @@ namespace wtfisthis
             this.vlcControl1.VlcLibDirectory = new DirectoryInfo(@".\libvlc\win-x64");
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             this.Controls.Add(this.vlcControl1);
+            // the Rest
             this.progressBar1.MarqueeAnimationSpeed = 0;
-
             openFileDialog1 = new OpenFileDialog();
-            timer2.Start();
-            timer2.Interval = 250;
         }
         public bool mouseonv = false;
         public bool mouseonp = false;
@@ -56,9 +54,15 @@ namespace wtfisthis
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+            try { 
             vlcControl1.SetMedia(new FileInfo(openFileDialog1.FileName));
             vlcControl1.Play();
             timer1.Start();
+            }
+            catch
+            {
+                MessageBox.Show("No file selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,9 +95,9 @@ namespace wtfisthis
         }
         private void toolStripTextBox2_TextChanged(object sender, EventArgs e)
         {
-            int.TryParse(toolStripTextBox2.Text, out int value);
+            int.TryParse(toolStripTextBox2.Text, out int vol);
             {
-                vlcControl1.Audio.Volume = value;
+                vlcControl1.Audio.Volume = vol;
             }
         }
 
